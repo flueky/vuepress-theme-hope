@@ -12,6 +12,7 @@
 pnpm install
 pnpm docs:dev
 ```
+
 输出结果如下：
 ```
 ✔ Initializing and preparing data - done in 5.80s
@@ -21,5 +22,15 @@ pnpm docs:dev
   ➜  Local:   http://localhost:8080/
 ```
 
-文档首页地址：http://localhost:8080/
+文档首页地址：http://localhost:8080/ <br>
 博客首页地址：http://localhost:8080/blog/
+
+## 部署服务
+
+### Github Page
+
+```shell
+pnpm docs:build # 执行构建命令
+```
+
+将在 `src/.vuepress/dist` 生成的文件推送到 [Github Page](https://pages.github.com/) 上。
