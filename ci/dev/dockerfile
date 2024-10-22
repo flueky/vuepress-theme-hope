@@ -1,0 +1,7 @@
+FROM nginx-ubuntu
+
+WORKDIR /root/vuepress-theme-hope
+
+EXPOSE 8080
+
+CMD pnpm install && pnpm docs:dev

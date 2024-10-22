@@ -1,5 +1,7 @@
 
+.pnpm-store
 node_modules/
+out
 src/.vuepress/.cache/
 src/.vuepress/.temp/
 src/.vuepress/dist/

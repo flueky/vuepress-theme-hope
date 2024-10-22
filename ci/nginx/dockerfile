@@ -1,0 +1,42 @@
+FROM ubuntu
+
+ENV NODEJS_HOME /usr/local/node-v20.18.0
+ENV PATH $NODEJS_HOME/bin:$PATH
+
+RUN apt update -y
+
+RUN set -eux; \
+	apt install -y \
+		wget \
+		xz-utils \
+    ; \
+	apt clean all
+
+RUN set -eux; \
+	\
+    downloadUrl="https://nodejs.org/dist/v20.18.0/node-v20.18.0-linux-x64.tar.xz"; \
+	# arch="$(dpkg --print-architecture)"; \
+	# case "$arch" in \
+	# 	'amd64') \
+    #         downloadUrl='https://nodejs.org/download/release/v16.19.0/node-v16.19.0-linux-x64.tar.gz' \
+	# 		downloadSha256='23770ba26a52cb8fedd1096613bbc419b8a033d774a457d9024bb5a0159f3585'; \
+	# 		;; \
+	# 	'arm64') \
+    #         downloadUrl='https://nodejs.org/download/release/v16.19.0/node-v16.19.0-linux-arm64.tar.gz' \
+	# 		downloadSha256='1d5e66db4e23a4ab2380dfa7cfebea1f960438db6bd2a7095020acfc64545542'; \
+	# 		;; \
+	# 	*) echo >&2 "error: unsupported architecture: '$arch'"; exit 1 ;; \
+	# esac; \
+	\
+	wget --progress=dot:giga -O nodejs.tar.gz "$downloadUrl"; \
+	# echo "$downloadSha256 *nodejs.tar.gz" | sha256sum --strict --check -; \
+	\
+	mkdir -p "$NODEJS_HOME"; \
+	tar --extract \
+		--file nodejs.tar.gz \
+		--directory "$NODEJS_HOME" \
+		--strip-components 1 \
+		--no-same-owner \
+	; \
+	npm install -g yarn pnpm; \
+	rm nodejs.tar.gz*;
