@@ -1,10 +1,10 @@
 import { hopeTheme } from "vuepress-theme-hope";
 
-import navbar from "./navbar.js";
-import sidebar from "./sidebar.js";
+import { enNavbar, zhNavbar } from "./navbar/index.js";
+import { enSidebar, zhSidebar } from "./sidebar/index.js";
 
 export default hopeTheme({
-  hostname: "https://mister-hope.github.io",
+  hostname: "https://vuepress-theme-hope-docs-demo.netlify.app",
 
   author: {
     name: "Mr.Hope",
@@ -19,19 +19,48 @@ export default hopeTheme({
 
   docsDir: "src",
 
-  // navbar
-  navbar,
+  locales: {
+    "/": {
+      // navbar
+      navbar: enNavbar,
 
-  // sidebar
-  sidebar,
+      // sidebar
+      sidebar: enSidebar,
 
-  footer: "Default footer",
+      footer: "Default footer",
 
-  displayFooter: true,
+      displayFooter: true,
+
+      metaLocales: {
+        editLink: "Edit this page on GitHub",
+      },
+    },
+
+    /**
+     * Chinese locale config
+     */
+    "/zh/": {
+      // navbar
+      navbar: zhNavbar,
+
+      // sidebar
+      sidebar: zhSidebar,
+
+      footer: "默认页脚",
+
+      displayFooter: true,
+
+      // page meta
+      metaLocales: {
+        editLink: "在 GitHub 上编辑此页",
+      },
+    },
+  },
 
   encrypt: {
     config: {
       "/demo/encrypt.html": ["1234"],
+      "/zh/demo/encrypt.html": ["1234"],
     },
   },
 
@@ -77,23 +106,17 @@ export default hopeTheme({
     },
   },
 
-  metaLocales: {
-    editLink: "Edit this page on GitHub",
-  },
-
-  // enable it to preview all changes in time
-  // hotReload: true,
-
   plugins: {
     blog: true,
-
-    // Install @waline/client before enabling it
     // Note: This is for testing ONLY!
     // You MUST generate and use your own comment service in production.
-    // comment: {
-    //   provider: "Waline",
-    //   serverURL: "https://waline-comment.vuejs.press",
-    // },
+    comment: {
+      provider: "Giscus",
+      repo: "vuepress-theme-hope/giscus-discussions",
+      repoId: "R_kgDOG_Pt2A",
+      category: "Announcements",
+      categoryId: "DIC_kwDOG_Pt2M4COD69",
+    },
 
     components: {
       components: ["Badge", "VPCard"],
@@ -144,35 +167,35 @@ export default hopeTheme({
       tasklist: true,
       vPre: true,
 
-      // install chart.js before enabling it
+      // Install chart.js before enabling it
       // chart: true,
 
       // insert component easily
 
-      // install echarts before enabling it
+      // Install echarts before enabling it
       // echarts: true,
 
-      // install flowchart.ts before enabling it
+      // Install flowchart.ts before enabling it
       // flowchart: true,
 
       // gfm requires mathjax-full to provide tex support
       // gfm: true,
 
-      // install mermaid before enabling it
+      // Install mermaid before enabling it
       // mermaid: true,
 
       // playground: {
       //   presets: ["ts", "vue"],
       // },
 
-      // install @vue/repl before enabling it
+      // Install @vue/repl before enabling it
       // vuePlayground: true,
 
-      // install sandpack-vue3 before enabling it
+      // Install sandpack-vue3 before enabling it
       // sandpack: true,
     },
 
-    // install @vuepress/plugin-pwa and uncomment these if you want a PWA
+    // Install @vuepress/plugin-pwa and uncomment these if you want a PWA
     // pwa: {
     //   favicon: "/favicon.ico",
     //   cacheHTML: true,
