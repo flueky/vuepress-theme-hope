@@ -24,8 +24,8 @@ export default hopeTheme({
       // navbar
       // navbar: zhNavbar,
 
-      // // sidebar
-      // sidebar: zhSidebar,
+      // sidebar
+      sidebar: zhSidebar,
 
       footer: "默认页脚",
 

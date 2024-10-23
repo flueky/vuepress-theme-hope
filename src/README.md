@@ -15,8 +15,8 @@ actions:
     link: ./demo/
     type: primary
 
-  - text: Docs
-    link: ./guide/
+  - text: Blog
+    link: ./blog/
 
 highlights:
   - header: Easy to install
