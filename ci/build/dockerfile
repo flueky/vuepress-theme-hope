@@ -8,6 +8,7 @@ RUN set -eux; \
 
 WORKDIR /root/vuepress-theme-hope
 
-EXPOSE 8080
-
-CMD pnpm install && pnpm docs:build && cd src/.vuepress && zip -r dist.zip dist && mkdir ../../out && mv dist.zip ../../out && rm -r dist
+CMD pnpm install && pnpm docs:build \
+	&& cd src/.vuepress && zip -r dist.zip dist \
+	&& mkdir ../../out && mv dist.zip ../../out \
+	&& rm -r dist

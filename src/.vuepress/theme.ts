@@ -7,8 +7,8 @@ export default hopeTheme({
   hostname: "https://vuepress-theme-hope-docs-demo.netlify.app",
 
   author: {
-    name: "Mr.Hope",
-    url: "https://mister-hope.com",
+    name: "Flueky Zuo",
+    url: "https://flueky.github.io",
   },
 
   iconAssets: "fontawesome-with-brands",
@@ -138,7 +138,10 @@ export default hopeTheme({
 
     // This features is enabled for demo, only preserve if you need it
     markdownTab: true,
-
+    markdownHint: {
+      hint: true,
+      alert: true,
+    },
     // These features are enabled for demo, only preserve features you need here
     mdEnhance: {
       align: true,
